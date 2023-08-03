@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         // Replace '/path/to/java' with the actual path to your Java JDK installation directory
-        JAVA_HOME = 'C:/Program Files/Java/jdk17'
+        JAVA_HOME = 'C:/Program Files/Java/jdk-17'
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
     stages {
