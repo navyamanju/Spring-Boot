@@ -11,21 +11,21 @@ pipeline {
         stage('install') {
             steps {
                 dir('Spring-Boot/SpringBootSecurityExample') {
-                    bat "mvn install -f SpringBootSecurityExample "
+                    bat "mvnw clean install "
                 }
             }
         }
         stage('test') {
             steps {
                 dir('Spring-Boot/SpringBootSecurityExample') {
-                    bat "mvn test -f SpringBootSecurityExample"
+                    bat "mvnw test "
                 }
             }
         }
         stage('package') {
             steps {
                 dir('Spring-Boot/SpringBootSecurityExample') {
-                    bat "mvn package -f SpringBootSecurityExample"
+                    bat "mvnw package "
                 }
             }
         }
