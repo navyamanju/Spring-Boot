@@ -3,24 +3,29 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-               bat "rmdir  /s /q Spring-Boot"
+                bat "rmdir /s /q Spring-Boot"
                 bat "git clone https://github.com/navyamanju/Spring-Boot.git"
-                bat "mvn clean -f SpringBootSecurityExample"
             }
         }
         stage('install') {
             steps {
-                bat "mvn install -f SpringBootSecurityExample"
+                dir('Spring-Boot/SpringBootSecurityExample') {
+                    bat "mvn clean install"
+                }
             }
         }
         stage('test') {
             steps {
-                bat "mvn test -f SpringBootSecurityExample"
+                dir('Spring-Boot/SpringBootSecurityExample') {
+                    bat "mvn test"
+                }
             }
         }
         stage('package') {
             steps {
-                bat "mvn package -f SpringBootSecurityExample"
+                dir('Spring-Boot/SpringBootSecurityExample') {
+                    bat "mvn package"
+                }
             }
         }
     }
